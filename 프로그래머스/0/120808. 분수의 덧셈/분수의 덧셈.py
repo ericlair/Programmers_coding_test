@@ -1,16 +1,23 @@
-def solution(numer1, denom1, numer2, denom2):
+import math
+import fractions
 
-    ans1 = numer1*denom2 + numer2*denom1    
-    ans2 = denom2*denom1   
+def solution(numer1, denom1, numer2, denom2):
     
-    i = min(ans1,ans2) 
+    a = numer1*denom2 + numer2*denom1
+    b = denom1*denom2
     
-    while i > 1 and not(ans1%i==0 and ans2%i==0) :
-        i -= 1
+    g = math.gcd(a,b)
     
-    ans1//=i
-    ans2//=i
+    a //= g
+    b //= g
     
-    answer = [ans1, ans2]
     
+    #---------------------------------------------------
+    
+    ans = fractions.Fraction(numer1,denom1) + fractions.Fraction(numer2,denom2)
+    a = ans.numerator
+    b = ans.denominator
+    
+    
+    answer = [a, b]
     return answer
